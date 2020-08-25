@@ -13,9 +13,23 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from contract.admin_site import contract_admin
+from django.apps import apps as django_apps
+from django.conf import settings
+from django.conf.urls.static import static
 from django.contrib import admin
-from django.urls import path
+from django.contrib.auth.views import LogoutView
+from django.urls import path, include
+
+from django.views.generic.base import RedirectView
+
+app_name = 'cms'
+app_config = django_apps.get_app_config(app_name)
 
 urlpatterns = [
+    path('administrator/', contract_admin.urls),
     path('admin/', admin.site.urls),
+    path('', RedirectView.as_view(url='administrator/'), name='home_url')
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
