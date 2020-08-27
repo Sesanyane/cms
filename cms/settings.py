@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -27,6 +28,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+INDEX_PAGE = 'cms.bhp.org.bw'
+
 APP_NAME = 'cms'
 
 SITE_ID = 40
@@ -42,10 +45,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
+    'django_extensions',
     'django_crypto_fields.apps.AppConfig',
+    'edc_dashboard.apps.AppConfig',
     'edc_device.apps.AppConfig',
     'edc_identifier.apps.AppConfig',
-    'contract.apps.EdcBaseAppConfig',
+    'edc_navbar.apps.AppConfig',
+    'cms_dashboard.apps.AppConfig',
+    'cms.apps.EdcBaseAppConfig',
     'contract.apps.AppConfig',
     'cms.apps.AppConfig',
 ]
@@ -131,10 +138,25 @@ USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/3.1/howto/static-files/
-
+# https://docs.djangoproject.com/en/3.0/howto/static-files/
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'cms', 'static')
 
+# dashboards
 DASHBOARD_URL_NAMES = {
+    'employee_listboard_url': 'cms_dashboard:employee_listboard_url',
+    'pi_listboard_url': 'cms_dashboard:pi_listboard_url',
+    'consultant_listboard_url': 'cms_dashboard:consultant_listboard_url',
+    'contract_listboard_url': 'cms_dashboard:contract_listboard_url',
+}
 
+DASHBOARD_BASE_TEMPLATES = {
+    'listboard_base_template': 'cms/base.html',
+    'contract_listboard_template': 'cms_dashboard/contract_listboard.html',
+    'dashboard_base_template': 'cms/base.html',
+    'employeee_listboard_template': 'cms_dashboard/employee_listboard.html',
+    'pi_listboard_template': 'cms_dashboard/pi_listboard.html',
+    'consultant_listboard_template': 'cms_dashboard/consultant_listboard.html',
 }
