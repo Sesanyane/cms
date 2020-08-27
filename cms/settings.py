@@ -142,7 +142,7 @@ USE_TZ = True
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'cms', 'static')
+STATIC_ROOT = 'static'
 
 # dashboards
 DASHBOARD_URL_NAMES = {
@@ -156,7 +156,7 @@ DASHBOARD_BASE_TEMPLATES = {
     'listboard_base_template': 'cms/base.html',
     'contract_listboard_template': 'cms_dashboard/contract_listboard.html',
     'dashboard_base_template': 'cms/base.html',
-    'employeee_listboard_template': 'cms_dashboard/employee_listboard.html',
+    'employee_listboard_template': 'cms_dashboard/employee_listboard.html',
     'pi_listboard_template': 'cms_dashboard/pi_listboard.html',
     'consultant_listboard_template': 'cms_dashboard/consultant_listboard.html',
 }
