@@ -1,5 +1,5 @@
--e /Users/ckgathi/source/contract
--e /Users/ckgathi/source/cms-dashboard
+git+https://github.com/botswana-harvard/contract@develop#egg=contract
+git+https://github.com/botswana-harvard/cms-dashboard@develop#egg=cms_dashboard
 git+https://github.com/botswana-harvard/django-revision@develop#egg=django-revision
 git+https://github.com/botswana-harvard/django-crypto-fields.git@develop#egg=django_crypto_fields
 git+https://github.com/botswana-harvard/edc-appointment.git@develop#egg=edc-appointment
