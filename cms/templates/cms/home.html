@@ -20,44 +20,44 @@
         <div class="col-md-3">
             <div class="card border-info mx-sm-1 p-3">
                 <div class="card border-info shadow text-info p-3 my-card" ><span  aria-hidden="true"></span></div>
-                <div class="text-info text-center mt-3"><h4>Subject Consents</h4></div>
-                <div class="text-info text-center mt-2"><h1>3</h1></div>
+                <div class="text-info text-center mt-3"><h4>Total staff/PI/Consultats</h4></div>
+                <div class="text-info text-center mt-2"><h1>{{total	}}</h1></div>
             </div>
         </div>
         <div class="col-md-3">
             <div class="card border-success mx-sm-1 p-3">
                 <div class="card border-success shadow text-success p-3 my-card"><span  aria-hidden="true"></span></div>
-                <div class="text-success text-center mt-3"><h4>Screened Subjects</h4></div>
-                <div class="text-success text-center mt-2"><h1>10</h1></div>
+                <div class="text-success text-center mt-3"><h4>Total employees</h4></div>
+                <div class="text-success text-center mt-2"><h1>{{employees_total}}</h1></div>
             </div>
         </div>
         <div class="col-md-3">
             <div class="card border-danger mx-sm-1 p-3">
                 <div class="card border-danger shadow text-danger p-3 my-card" ><span aria-hidden="true"></span></div>
-                <div class="text-danger text-center mt-3"><h4>Enrollments</h4></div>
-                <div class="text-danger text-center mt-2"><h1>3</h1></div>
+                <div class="text-danger text-center mt-3"><h4>Total PIs</h4></div>
+                <div class="text-danger text-center mt-2"><h1>{{cosultant_total}}</h1></div>
             </div>
         </div>
         <div class="col-md-3">
             <div class="card border-warning mx-sm-1 p-3">
                 <div class="card border-warning shadow text-warning p-3 my-card" ><span  aria-hidden="true"></span></div>
-                <div class="text-warning text-center mt-3"><h4>Lost to followups</h4></div>
-                <div class="text-warning text-center mt-2"><h1>1</h1></div>
+                <div class="text-warning text-center mt-3"><h4>Total Consultants</h4></div>
+                <div class="text-warning text-center mt-2"><h1>{{pi_total}}</h1></div>
             </div>
         </div>
      </div>
 </div>
 <div class="row">
 
-<aside class="col-sm-4">
+<aside class="col-sm-3">
 <div class="card">
 	<article class="card-group-item">
-		<header class="card-header"><h6 class="title">Other stats </h6></header>
+		<header class="card-header"><h6 class="title">Overall Contract stats </h6></header>
 		<div class="filter-content">
 			<div class="list-group list-group-flush">
-			  <a href="#" class="list-group-item">Verified consent <span class="float-right badge badge-light round">142</span> </a>
-			  <a href="#" class="list-group-item">Unverified consent  <span class="float-right badge badge-light round">3</span>  </a>
-			  <a href="#" class="list-group-item">Offstudy <span class="float-right badge badge-light round">12</span>  </a>
+			  <a href="#" class="list-group-item">Active Contracts <span class="float-right badge badge-light round">142</span> </a>
+			  <a href="#" class="list-group-item">Completed contracts  <span class="float-right badge badge-light round">3</span>  </a>
+			  <a href="#" class="list-group-item">Completed contracts <span class="float-right badge badge-light round">12</span>  </a>
 			</div>  <!-- list-group .// -->
 		</div>
 	</article> <!-- card-group-item.// -->
@@ -65,32 +65,45 @@
 </aside> <!-- col.// -->
 
 
-<aside class="col-sm-4">
+<aside class="col-sm-3">
 <div class="card">
 	<article class="card-group-item">
-		<header class="card-header"><h6 class="title">Links </h6></header>
+		<header class="card-header"><h6 class="title">Pi contracts </h6></header>
 		<div class="filter-content">
 			<div class="list-group list-group-flush">
-			  <a href="#" class="list-group-item">ODK Documentation</a>
-			  <a href="#" class="list-group-item">Data Export</a>
-			  <a href="{% url contract_listboard_url %}" class="list-group-item">EDC SMS</a>
-			  <a href="#" class="list-group-item">Verify consent</a>
+			  <a href="#" class="list-group-item">PI contracts <span class="float-right badge badge-light round">0</span></a>
+			  <a href="#" class="list-group-item">PI active contracts <span class="float-right badge badge-light round">0</span></a>
+			  <a href="#" class="list-group-item">PI completed contracts <span class="float-right badge badge-light round">0</span></a>
 			</div>  <!-- list-group .// -->
 		</div>
 	</article> <!-- card-group-item.// -->
 </div> <!-- card.// -->
 </aside> <!-- col.// -->
 
-<aside class="col-sm-4">
+<aside class="col-sm-3">
 <div class="card">
 	<article class="card-group-item">
-		<header class="card-header"><h6 class="title">Lab stats </h6></header>
+		<header class="card-header"><h6 class="title">Employee contracts</h6></header>
 		<div class="filter-content">
 			<div class="list-group list-group-flush">
-			  <a href="#" class="list-group-item">Resulted <span class="float-right badge badge-light round">0</span> </a>
-			  <a href="#" class="list-group-item">Pending results  <span class="float-right badge badge-light round">0</span></a>
-			  <a href="#" class="list-group-item">Stored samples <span class="float-right badge badge-light round">0</span></a>
-			  <a href="#" class="list-group-item">Shipped samples <span class="float-right badge badge-light round">0</span></a>
+			  <a href="#" class="list-group-item">Employee contracts <span class="float-right badge badge-light round">0</span> </a>
+			  <a href="#" class="list-group-item">Employee active contracts  <span class="float-right badge badge-light round">0</span></a>
+			  <a href="#" class="list-group-item">Employee completed contracts <span class="float-right badge badge-light round">0</span></a>
+			</div>  <!-- list-group .// -->
+		</div>
+	</article> <!-- card-group-item.// -->
+</div> <!-- card.// -->
+</aside> <!-- col.// -->
+
+<aside class="col-sm-3">
+<div class="card">
+	<article class="card-group-item">
+		<header class="card-header"><h6 class="title">Employee contracts</h6></header>
+		<div class="filter-content">
+			<div class="list-group list-group-flush">
+			  <a href="#" class="list-group-item">Consultant contracts <span class="float-right badge badge-light round">0</span> </a>
+			  <a href="#" class="list-group-item">Consultant active contracts  <span class="float-right badge badge-light round">0</span></a>
+			  <a href="#" class="list-group-item">Consultant completed contracts <span class="float-right badge badge-light round">0</span></a>
 			</div>  <!-- list-group .// -->
 		</div>
 	</article> <!-- card-group-item.// -->
