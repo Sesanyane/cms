@@ -35,7 +35,7 @@
             <div class="card border-danger mx-sm-1 p-3">
                 <div class="card border-danger shadow text-danger p-3 my-card" ><span aria-hidden="true"></span></div>
                 <div class="text-danger text-center mt-3"><h4>Total PIs</h4></div>
-                <div class="text-danger text-center mt-2"><h1>{{cosultant_total}}</h1></div>
+                <div class="text-danger text-center mt-2"><h1>{{consultant_total}}</h1></div>
             </div>
         </div>
         <div class="col-md-3">
@@ -55,9 +55,9 @@
 		<header class="card-header"><h6 class="title">Overall Contract stats </h6></header>
 		<div class="filter-content">
 			<div class="list-group list-group-flush">
-			  <a href="#" class="list-group-item">Active Contracts <span class="float-right badge badge-light round">142</span> </a>
-			  <a href="#" class="list-group-item">Completed contracts  <span class="float-right badge badge-light round">3</span>  </a>
-			  <a href="#" class="list-group-item">Completed contracts <span class="float-right badge badge-light round">12</span>  </a>
+			  <a href="#" class="list-group-item">Active Contracts <span class="float-right badge badge-light round">{{active_contracts}}</span> </a>
+			  <a href="#" class="list-group-item">Completed contracts  <span class="float-right badge badge-light round">{{completed_contracts}}</span>  </a>
+			  <a href="#" class="list-group-item">Due Contracts <span class="float-right badge badge-light round">0</span>  </a>
 			</div>  <!-- list-group .// -->
 		</div>
 	</article> <!-- card-group-item.// -->
@@ -71,9 +71,9 @@
 		<header class="card-header"><h6 class="title">Pi contracts </h6></header>
 		<div class="filter-content">
 			<div class="list-group list-group-flush">
-			  <a href="#" class="list-group-item">PI contracts <span class="float-right badge badge-light round">0</span></a>
-			  <a href="#" class="list-group-item">PI active contracts <span class="float-right badge badge-light round">0</span></a>
-			  <a href="#" class="list-group-item">PI completed contracts <span class="float-right badge badge-light round">0</span></a>
+			  <a href="#" class="list-group-item">PI contracts <span class="float-right badge badge-light round">{{pi_contracts}}</span></a>
+			  <a href="#" class="list-group-item">PI active contracts <span class="float-right badge badge-light round">{{active_pis}}</span></a>
+			  <a href="#" class="list-group-item">PI completed contracts <span class="float-right badge badge-light round">{{pi_completed}}</span></a>
 			</div>  <!-- list-group .// -->
 		</div>
 	</article> <!-- card-group-item.// -->
@@ -86,9 +86,9 @@
 		<header class="card-header"><h6 class="title">Employee contracts</h6></header>
 		<div class="filter-content">
 			<div class="list-group list-group-flush">
-			  <a href="#" class="list-group-item">Employee contracts <span class="float-right badge badge-light round">0</span> </a>
-			  <a href="#" class="list-group-item">Employee active contracts  <span class="float-right badge badge-light round">0</span></a>
-			  <a href="#" class="list-group-item">Employee completed contracts <span class="float-right badge badge-light round">0</span></a>
+			  <a href="#" class="list-group-item">Employee contracts <span class="float-right badge badge-light round">{{employee_contracts}}</span> </a>
+			  <a href="#" class="list-group-item">Employee active contracts  <span class="float-right badge badge-light round">{{active_employees}}</span></a>
+			  <a href="#" class="list-group-item">Employee completed contracts <span class="float-right badge badge-light round">{{employee_completed}}</span></a>
 			</div>  <!-- list-group .// -->
 		</div>
 	</article> <!-- card-group-item.// -->
@@ -98,12 +98,12 @@
 <aside class="col-sm-3">
 <div class="card">
 	<article class="card-group-item">
-		<header class="card-header"><h6 class="title">Employee contracts</h6></header>
+		<header class="card-header"><h6 class="title">Consultant contracts</h6></header>
 		<div class="filter-content">
 			<div class="list-group list-group-flush">
-			  <a href="#" class="list-group-item">Consultant contracts <span class="float-right badge badge-light round">0</span> </a>
-			  <a href="#" class="list-group-item">Consultant active contracts  <span class="float-right badge badge-light round">0</span></a>
-			  <a href="#" class="list-group-item">Consultant completed contracts <span class="float-right badge badge-light round">0</span></a>
+			  <a href="#" class="list-group-item">Consultant contracts <span class="float-right badge badge-light round">{{consultant_contracts}}</span> </a>
+			  <a href="#" class="list-group-item">Consultant active contracts  <span class="float-right badge badge-light round">{{active_consultants}}</span></a>
+			  <a href="#" class="list-group-item">Consultant completed contracts <span class="float-right badge badge-light round">{{consultant_completed}}</span></a>
 			</div>  <!-- list-group .// -->
 		</div>
 	</article> <!-- card-group-item.// -->

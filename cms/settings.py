@@ -147,6 +147,7 @@ STATIC_ROOT = 'static'
 # dashboards
 DASHBOARD_URL_NAMES = {
     'employee_listboard_url': 'cms_dashboard:employee_listboard_url',
+    'allemployees_listboard_url': 'cms_dashboard:allemployees_listboard_url',
     'pi_listboard_url': 'cms_dashboard:pi_listboard_url',
     'consultant_listboard_url': 'cms_dashboard:consultant_listboard_url',
     'contract_listboard_url': 'cms_dashboard:contract_listboard_url',
@@ -157,6 +158,7 @@ DASHBOARD_BASE_TEMPLATES = {
     'contract_listboard_template': 'cms_dashboard/contract_listboard.html',
     'dashboard_base_template': 'cms/base.html',
     'employee_listboard_template': 'cms_dashboard/employee_listboard.html',
+    'allemployees_listboard_template': 'cms_dashboard/allemployees_listboard.html',
     'pi_listboard_template': 'cms_dashboard/pi_listboard.html',
     'consultant_listboard_template': 'cms_dashboard/consultant_listboard.html',
 }
