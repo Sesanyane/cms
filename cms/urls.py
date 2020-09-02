@@ -48,6 +48,7 @@ urlpatterns = [
     path('edc_base/', include('edc_base.urls')),
     path('edc_device/', include('edc_device.urls')),
     path('edc_identifier/', include('edc_identifier.urls')),
+    path('edc_sms/', include('edc_sms.urls')),
 
 
     path('contract/', include('contract.urls')),

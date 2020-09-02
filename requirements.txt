@@ -18,7 +18,9 @@ git+https://github.com/botswana-harvard/edc-model-wrapper.git@0.1.7#egg=edc-mode
 git+https://github.com/botswana-harvard/edc-navbar@develop#egg=edc-navbar
 git+https://github.com/botswana-harvard/edc-reference.git@develop#egg=edc-reference
 git+https://github.com/botswana-harvard/edc-search.git@develop#egg=edc_search
+git+https://github.com/botswana-harvard/edc-sms.git@develop#egg=edc_sms
 git+https://github.com/botswana-harvard/edc-subject-dashboard.git@0.1.11#egg=edc-subject-dashboard
 git+https://github.com/botswana-harvard/edc-visit-schedule.git@0.2.10#egg=edc-visit-schedule
 git+https://github.com/botswana-harvard/edc-identifier.git@0.2.11#egg=edc-identifier
 mysqlclient
+django_q

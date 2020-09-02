@@ -10,11 +10,16 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
+import configparser
 import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
+
+APP_NAME = 'cms'
+
+ETC_DIR = '/etc/'
 
 
 # Quick-start development settings - unsuitable for production
@@ -35,6 +40,23 @@ APP_NAME = 'cms'
 SITE_ID = 40
 REVIEWER_SITE_ID = 1
 
+CONFIG_FILE = f'{APP_NAME}.ini'
+CONFIG_PATH = os.path.join(ETC_DIR, APP_NAME, CONFIG_FILE)
+config = configparser.ConfigParser()
+config.read(CONFIG_PATH)
+
+# email configurations
+EMAIL_BACKEND = config['email_conf'].get('email_backend')
+EMAIL_HOST = config['email_conf'].get('email_host')
+EMAIL_USE_TLS = config['email_conf'].get('email_use_tls')
+EMAIL_PORT = config['email_conf'].get('email_port')
+EMAIL_HOST_USER = config['email_conf'].get('email_user')
+EMAIL_HOST_PASSWORD = config['email_conf'].get('email_host_pwd')
+
+# sms configuration
+BASE_API_URL = config['edc_sms']['base_api_url']
+
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -46,6 +68,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'django_extensions',
+    'django_q',
     'django_crypto_fields.apps.AppConfig',
     'edc_dashboard.apps.AppConfig',
     'edc_device.apps.AppConfig',
@@ -53,6 +76,7 @@ INSTALLED_APPS = [
     'edc_navbar.apps.AppConfig',
     'cms_dashboard.apps.AppConfig',
     'cms.apps.EdcBaseAppConfig',
+    'cms.apps.EdcSmsAppConfig',
     'contract.apps.AppConfig',
     'cms.apps.AppConfig',
 ]
@@ -103,6 +127,14 @@ DATABASES = {
     }
 }
 
+# Django q configurations
+
+Q_CLUSTER = {
+    'name': 'cms',
+    'retry': 60,
+    'orm': 'default',
+}
+
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -128,11 +160,11 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Africa/Gaborone'
 
 USE_I18N = True
 
-USE_L10N = True
+USE_L10N = False
 
 USE_TZ = True
 
@@ -154,6 +186,7 @@ DASHBOARD_URL_NAMES = {
                                          'consultant_contract_listboard_url',
     'consultant_listboard_url': 'cms_dashboard:consultant_listboard_url',
     'contract_listboard_url': 'cms_dashboard:contract_listboard_url',
+    'contact_listboard_url': 'edc_sms:contact_listboard_url',
 }
 
 DASHBOARD_BASE_TEMPLATES = {
