@@ -27,8 +27,6 @@ class HomeView(EdcBaseViewMixin, NavbarViewMixin, TemplateView):
         consultant_contracts = Contract.objects.filter(
             identifier__startswith="C")
 
-        all_contracts = contracts.count(),
-
         active_employees = Contract.objects.filter(
             identifier__startswith="E", status="Active")
         active_pis = Contract.objects.filter(
