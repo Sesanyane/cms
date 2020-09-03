@@ -10,11 +10,20 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
+import configparser
 import os
+import sys
+
+from django.core.management.color import color_style
 from pathlib import Path
+style = color_style()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
+
+APP_NAME = 'cms'
+
+ETC_DIR = '/etc/'
 
 
 # Quick-start development settings - unsuitable for production
@@ -35,6 +44,25 @@ APP_NAME = 'cms'
 SITE_ID = 40
 REVIEWER_SITE_ID = 1
 
+CONFIG_FILE = f'{APP_NAME}.ini'
+CONFIG_PATH = os.path.join(ETC_DIR, APP_NAME, CONFIG_FILE)
+
+sys.stdout.write(style.SUCCESS(f'  * Reading config from {CONFIG_FILE}\n'))
+config = configparser.ConfigParser()
+config.read(CONFIG_PATH)
+
+# email configurations
+EMAIL_BACKEND = config['email_conf'].get('email_backend')
+EMAIL_HOST = config['email_conf'].get('email_host')
+EMAIL_USE_TLS = config['email_conf'].get('email_use_tls')
+EMAIL_PORT = config['email_conf'].get('email_port')
+EMAIL_HOST_USER = config['email_conf'].get('email_user')
+EMAIL_HOST_PASSWORD = config['email_conf'].get('email_host_pwd')
+
+# sms configuration
+BASE_API_URL = config['edc_sms']['base_api_url']
+
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -46,6 +74,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'django_extensions',
+    'django_q',
     'django_crypto_fields.apps.AppConfig',
     'edc_dashboard.apps.AppConfig',
     'edc_device.apps.AppConfig',
@@ -53,6 +82,7 @@ INSTALLED_APPS = [
     'edc_navbar.apps.AppConfig',
     'cms_dashboard.apps.AppConfig',
     'cms.apps.EdcBaseAppConfig',
+    'cms.apps.EdcSmsAppConfig',
     'contract.apps.AppConfig',
     'cms.apps.AppConfig',
 ]
@@ -96,11 +126,32 @@ ETC_DIR = '/etc/'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
+mysql_config = configparser.ConfigParser()
+mysql_config.read(os.path.join(ETC_DIR, APP_NAME, 'mysql.ini'))
+
+HOST = mysql_config['mysql']['host']
+DB_USER = mysql_config['mysql']['user']
+DB_PASSWORD = mysql_config['mysql']['password']
+DB_NAME = mysql_config['mysql']['database']
+PORT = mysql_config['mysql']['port']
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': DB_NAME,
+        'USER': DB_USER,
+        'PASSWORD': DB_PASSWORD,
+        'HOST': HOST,   # Or an IP Address that your DB is hosted on
+        'PORT': PORT,
     }
+}
+
+# Django q configurations
+
+Q_CLUSTER = {
+    'name': 'cms',
+    'retry': 60,
+    'orm': 'default',
 }
 
 
@@ -128,11 +179,11 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Africa/Gaborone'
 
 USE_I18N = True
 
-USE_L10N = True
+USE_L10N = False
 
 USE_TZ = True
 
@@ -142,7 +193,7 @@ USE_TZ = True
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 STATIC_URL = '/static/'
-STATIC_ROOT = 'static'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 # dashboards
 DASHBOARD_URL_NAMES = {
@@ -154,6 +205,7 @@ DASHBOARD_URL_NAMES = {
                                          'consultant_contract_listboard_url',
     'consultant_listboard_url': 'cms_dashboard:consultant_listboard_url',
     'contract_listboard_url': 'cms_dashboard:contract_listboard_url',
+    'contact_listboard_url': 'edc_sms:contact_listboard_url',
 }
 
 DASHBOARD_BASE_TEMPLATES = {
