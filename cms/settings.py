@@ -12,7 +12,11 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 import configparser
 import os
+import sys
+
+from django.core.management.color import color_style
 from pathlib import Path
+style = color_style()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
@@ -42,6 +46,8 @@ REVIEWER_SITE_ID = 1
 
 CONFIG_FILE = f'{APP_NAME}.ini'
 CONFIG_PATH = os.path.join(ETC_DIR, APP_NAME, CONFIG_FILE)
+
+sys.stdout.write(style.SUCCESS(f'  * Reading config from {CONFIG_FILE}\n'))
 config = configparser.ConfigParser()
 config.read(CONFIG_PATH)
 
@@ -120,10 +126,23 @@ ETC_DIR = '/etc/'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
+mysql_config = configparser.ConfigParser()
+mysql_config.read(os.path.join(ETC_DIR, APP_NAME, 'mysql.ini'))
+
+HOST = mysql_config['mysql']['host']
+DB_USER = mysql_config['mysql']['user']
+DB_PASSWORD = mysql_config['mysql']['password']
+DB_NAME = mysql_config['mysql']['database']
+PORT = mysql_config['mysql']['port']
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': DB_NAME,
+        'USER': DB_USER,
+        'PASSWORD': DB_PASSWORD,
+        'HOST': HOST,   # Or an IP Address that your DB is hosted on
+        'PORT': PORT,
     }
 }
 
@@ -174,7 +193,7 @@ USE_TZ = True
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 STATIC_URL = '/static/'
-STATIC_ROOT = 'static'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 # dashboards
 DASHBOARD_URL_NAMES = {
