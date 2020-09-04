@@ -98,7 +98,6 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'edc_dashboard.middleware.DashboardMiddleware',
     'edc_subject_dashboard.middleware.DashboardMiddleware',
-    'edc_lab_dashboard.middleware.DashboardMiddleware'
 ]
 
 ROOT_URLCONF = 'cms.urls'
@@ -186,7 +185,6 @@ USE_I18N = True
 USE_L10N = False
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
