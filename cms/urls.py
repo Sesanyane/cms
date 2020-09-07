@@ -52,7 +52,7 @@ urlpatterns = [
 
 
     path('contract/', include('contract.urls')),
-    path('subject/', include('cms_dashboard.urls')),
+    path('cms/', include('cms_dashboard.urls')),
 
     path('switch_sites/', LogoutView.as_view(next_page=settings.INDEX_PAGE),
          name='switch_sites_url'),
