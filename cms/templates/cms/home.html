@@ -55,9 +55,9 @@
 		<header class="card-header"><h6 class="title">Overall Contract stats </h6></header>
 		<div class="filter-content">
 			<div class="list-group list-group-flush">
-			  <a href="#" class="list-group-item">Active Contracts <span class="float-right badge badge-light round">{{active_contracts}}</span> </a>
-			  <a href="#" class="list-group-item">Completed contracts  <span class="float-right badge badge-light round">{{completed_contracts}}</span>  </a>
-			  <a href="#" class="list-group-item">Due Contracts <span class="float-right badge badge-light round">0</span>  </a>
+			  <a href="{% url contract_listboard_url %}" class="list-group-item">Active Contracts <span class="float-right badge badge-light round">{{active_contracts}}</span> </a>
+			  <a href="{% url contract_listboard_url %}" class="list-group-item">Completed contracts  <span class="float-right badge badge-light round">{{completed_contracts}}</span>  </a>
+			  <a href="{% url contract_listboard_url %}" class="list-group-item">Due Contracts <span class="float-right badge badge-light round">0</span>  </a>
 			</div>  <!-- list-group .// -->
 		</div>
 	</article> <!-- card-group-item.// -->
