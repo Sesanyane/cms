@@ -23,19 +23,22 @@ BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 
 APP_NAME = 'cms'
 
-ETC_DIR = '/etc/'
+ETC_DIR = '/etc/cms'
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
+KEY_PATH = os.path.join(ETC_DIR, 'crypto_fields')
+
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '5((#k_fhd-6-a(aocadjq3)t%v_kmwx!f@#a7tc_o0e$pzs%ts'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
+LIVE_SYSTEM = None
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1','10.113.200.54']
 
 INDEX_PAGE = 'cms.bhp.org.bw'
 
@@ -45,7 +48,7 @@ SITE_ID = 40
 REVIEWER_SITE_ID = 1
 
 CONFIG_FILE = f'{APP_NAME}.ini'
-CONFIG_PATH = os.path.join(ETC_DIR, APP_NAME, CONFIG_FILE)
+CONFIG_PATH = os.path.join(ETC_DIR, CONFIG_FILE)
 
 sys.stdout.write(style.SUCCESS(f'  * Reading config from {CONFIG_FILE}\n'))
 config = configparser.ConfigParser()
@@ -120,13 +123,12 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'cms.wsgi.application'
 
-ETC_DIR = '/etc/'
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 mysql_config = configparser.ConfigParser()
-mysql_config.read(os.path.join(ETC_DIR, APP_NAME, 'mysql.ini'))
+mysql_config.read(os.path.join(ETC_DIR, 'mysql.ini'))
 
 HOST = mysql_config['mysql']['host']
 DB_USER = mysql_config['mysql']['user']
