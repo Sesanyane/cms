@@ -82,6 +82,7 @@ INSTALLED_APPS = [
     'edc_dashboard.apps.AppConfig',
     'edc_device.apps.AppConfig',
     'edc_identifier.apps.AppConfig',
+    'edc_model_admin.apps.AppConfig',
     'edc_navbar.apps.AppConfig',
     'cms_dashboard.apps.AppConfig',
     'cms.apps.EdcBaseAppConfig',
@@ -197,6 +198,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 # dashboards
 DASHBOARD_URL_NAMES = {
+    'appraisal_dashboard_url': 'cms_dashboard:appraisal_dashboard_url',
+    'appraisal_listboard_url': 'cms_dashboard:appraisal_listboard_url',
     'employee_dashboard_url': 'cms_dashboard:employee_dashboard_url',
     'employee_listboard_url': 'cms_dashboard:employee_listboard_url',
     'emp_contract_listboard_url': 'cms_dashboard:emp_contract_listboard_url',
@@ -213,6 +216,8 @@ DASHBOARD_URL_NAMES = {
 
 DASHBOARD_BASE_TEMPLATES = {
     'listboard_base_template': 'cms/base.html',
+    'appraisal_dashboard_template': 'cms_dashboard/employee/appraisal_dashboard.html',
+    'appraisal_listboard_template': 'cms_dashboard/employee/appraisal_listboard.html',
     'contract_listboard_template': 'cms_dashboard/contract/contract_listboard.html',
     'allcontracts_listboard_template': 'cms_dashboard/contract/'
                                        'allcontracts_listboard.html',
