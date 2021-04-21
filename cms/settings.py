@@ -44,6 +44,8 @@ INDEX_PAGE = 'cms.bhp.org.bw'
 
 APP_NAME = 'cms'
 
+LOGIN_REDIRECT_URL = 'home_url'
+
 SITE_ID = 40
 REVIEWER_SITE_ID = 1
 
